@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Imagenes/corazon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <title>Te Amo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #b784db;
+            margin: 0;
+        }
+
+        .notebook {
+            width: 310px;
+            height: 88vh;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .inicio{
+            position: relative;
+            left: 100px;
+            padding-top: 1px;
+            padding-bottom: 20px;
+            font-size: 30px;
+            font-family: "Dancing Script", cursive;
+            font-optical-sizing: auto;
+             font-style: normal;
+        }
+
+        .content {
+            flex-grow: 1;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .line {
+            position: relative;
+            width: 100%;
+            height: 0.1vh;
+            background-color: black;
+            margin: 20px 0;
+        }
+        .text {
+            position: absolute;
+            top: -15px;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid black;
+            opacity: 0;
+            font-size: 14px;
+        }
+
+        .fin {
+            align-self: flex-end;
+            font-size: 15px;
+
+        }
+
+        @keyframes typing {
+            from { width: 0; opacity: 1; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="notebook" id="notebook">
+        <div class="inicio">Aniversario</div>
+        <div class="content" id="content"></div>
+        <div class="fin">Para : Mi amor</div>
+    </div>
+<div class="floor">
+    
+</div>
+    <script>
+const content = document.getElementById('content');
+const text = `Durante el primer mes de nuestra relación, he aprendido que cada día a tu lado es un regalo valioso. 
+Tu amor llena mi corazón de una manera que nunca imaginé posible, y 
+tu sonrisa ilumina mis días. Cada momento que pasamos juntos es una nueva experiencia, 
+y no puedo esperar a ver qué nos depara el futuro. Gracias por ser mi compañera, mi confidente y mi amor. 
+Esto es solo el comienzo de una hermosa historia que estamos escribiendo juntos, 
+y estoy ansioso por cada nuevo capítulo. Te amo más de lo que puedo decir y
+ valoro cada momento que hemos pasado juntos durante estos maravillosos meses.`; // (el resto del texto)
+
+function wrapText(context, text, maxWidth) {
+    const words = text.split(' ');
+    const lines = [];
+    let currentLine = '';
+
+    for (let word of words) {
+        const testLine = currentLine ? `${currentLine} ${word}` : word;
+        const metrics = context.measureText(testLine);
+        if (metrics.width > maxWidth && currentLine) {
+            lines.push(currentLine);
+            currentLine = word;
+        } else {
+            currentLine = testLine;
+        }
+    }
+    if (currentLine) {
+        lines.push(currentLine);
+    }
+    return lines;
+}
+
+const canvas = document.createElement('canvas');
+const context = canvas.getContext('2d');
+context.font = '16px Arial';
+
+const maxWidth = 390; // Ajustado para dar un poco más de margen
+
+const lines = wrapText(context, text, maxWidth);
+
+const lineHeight = 30; // Altura aproximada de cada línea
+const contentHeight = content.clientHeight;
+const maxLines = Math.floor(contentHeight / lineHeight);
+
+lines.slice(0, maxLines).forEach((line, index) => {
+    const lineDiv = document.createElement('div');
+    lineDiv.className = 'line';
+    
+    const textSpan = document.createElement('span');
+    textSpan.className = 'text';
+    textSpan.textContent = line;
+    textSpan.style.animationDelay = `${index * 1}s`;
+    textSpan.style.animation = `typing 1s steps(40, end) forwards ${index * 1}s, blink-caret 0.75s step-end infinite`;
+
+    lineDiv.appendChild(textSpan);
+    content.appendChild(lineDiv);
+});
+    </script>
+</body>
+</html>

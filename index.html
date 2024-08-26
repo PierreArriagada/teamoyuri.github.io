@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="Imagenes/corazon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rosas.css">
+    <title>Te amo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .left-container, .right-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .left-container {
+            width: 30%;
+            background-color: #b784db;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+        }
+        .si-button{
+            position: absolute;
+
+        }
+        #no-button {
+        position: relative;
+        transition: all 0.2s ease; /* Para un movimiento más suave */
+        }
+        .right-container {
+            width: 70%;
+            background-color: #b784db;
+            position: relative;
+        }
+        .gif-container {
+            width: 300px; /* Ancho fijo */
+            height: 300px; /* Alto fijo */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px; /* Reduce el margen inferior */
+        }
+        .gif-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Centra los botones */
+            width: 100%;
+            max-width: 600px;
+            margin-top: 1; /* Reduce el margen superior */
+        }
+        .rounded-box {
+            width: 100px;
+            height: 40px;
+            background-color: #a41ea8;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px; /* Añade margen entre los botones */
+            box-shadow: 0.5rem 1rem 3rem rgb(107, 7, 90); /* Añade sombra a los botones */
+        }
+        .latido {
+            width: 1em; 
+            height: 1em;
+            margin-left: 10px; 
+        }
+    </style>
+    <script>
+        function Gif1() {
+            document.getElementById('gift-principal').src = "/Imagenes/siii.gif";
+        }
+
+        function resetGif1() {
+            document.getElementById('gift-principal').src = "/Imagenes/ezgif-3-12e16ec104.gif";
+        }
+        function Gif2() {
+            document.getElementById('gift-principal').src = "/Imagenes/corazon-roto.gif";
+        }
+
+        function resetGif2() {
+            document.getElementById('gift-principal').src = "/Imagenes/ezgif-3-12e16ec104.gif";
+        }
+        function moveButton() {
+                const button = document.getElementById('no-button');
+                const container = document.querySelector('.left-container');
+                const containerRect = container.getBoundingClientRect();
+                
+                const buttonRect = button.getBoundingClientRect();
+                const maxX = containerRect.width - buttonRect.width;
+                const maxY = containerRect.height - buttonRect.height;
+                
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                button.style.position = 'absolute';
+                button.style.left = `${randomX}px`;
+                button.style.top = `${randomY}px`;
+        }
+        function initializeButton() {
+            const button = document.getElementById('no-button');
+            button.style.position = 'relative';
+            button.style.left = 'auto';
+            button.style.top = 'auto';
+        }
+
+// Llamamos a esta función cuando se carga la página
+        window.onload = initializeButton;
+
+    </script>
+</head>
+<body>
+    <div class="right-container">
+        <div class="rosa-container">
+            <div class="glass"></div>
+            <div class="thorns">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="glow"></div>
+            <div class="rose-leaves">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="rose-petals">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="sparkles">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class="left-container">
+        <h1>¿Me amas?<img  src="Imagenes/corzonlatinedo.gif" alt="Corazon latiendo" class="latido"></h1>
+        <div class="gif-container">
+            <img id="gift-principal" src="Imagenes/ezgif-3-12e16ec104.gif" alt="Emoji lindo">
+        </div>
+        <div class="button-container">
+            <a href="carta.html" id="si-button" class="rounded-box" onmouseover="Gif1()" onmouseout="resetGif1()">Sí</a>
+            <a href="#" id="no-button" class="rounded-box" 
+   onmouseover="Gif2();" 
+   onmouseout="resetGif2();" 
+   onclick="moveButton(); return false;">No</a>
+        </div>
+    </div>
+    <div class="right-container">
+        <div class="rosa-container">
+            <div class="glass"></div>
+            <div class="thorns">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="glow"></div>
+            <div class="rose-leaves">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="rose-petals">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="sparkles">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
